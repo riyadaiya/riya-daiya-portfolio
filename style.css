@@ -1,0 +1,303 @@
+/* ---------- Tokens (from Figma) ---------- */
+:root {
+  --bg: #ede8e5;
+  --plum: #47142e;
+  --ink: #252525;
+  --nav-ink: #373737;
+  --tagline: #5e5e5e;
+  --muted: #635e56;
+  --body: #444;
+  --accent: #8d78b7;
+  --placeholder: #d0d0d0;
+  --badge-bg: #dedede;
+  --blue: #226cff;
+  --footer-bg: #252525;
+  --footer-ink: #dedede;
+  --lilac: #d2d2ff;
+
+  /* Nudica isn't a web font on Google Fonts. Add your own @font-face for it
+     below and put "Nudica" first in this stack. Geist is the fallback. */
+  --font-display: "Nudica", "Geist", system-ui, sans-serif;
+  --font-body: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: "Instrument Serif", Georgia, serif;
+
+  --gutter: clamp(20px, 8.33vw, 120px);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+a:focus-visible {
+  outline: 2px solid var(--plum);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 85px;
+  padding: 20px var(--gutter);
+  background: var(--bg);
+}
+
+.nav__logo { display: block; width: 45px; height: 45px; }
+.nav__logo svg { display: block; }
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--nav-ink);
+}
+
+.nav__links a { text-decoration: none; }
+.nav__links a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  width: min(816px, 100% - 2 * var(--gutter));
+  margin: 92px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hero__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 40px;
+  letter-spacing: -0.4px;
+}
+
+.hero__name {
+  margin: 0;
+  font: inherit;
+  color: var(--plum);
+}
+
+.hero__tagline {
+  margin: 0;
+  line-height: 1.42;
+  color: var(--tagline);
+  font-feature-settings: "calt" 0;
+}
+
+.hero__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.hero__meta p { margin: 0; }
+.hero__meta .muted { color: var(--muted); }
+.hero__meta a { text-underline-position: from-font; }
+
+/* ---------- Projects ---------- */
+.projects {
+  width: min(1342px, 100% - 2 * 24px);
+  margin: 92px auto 0;
+  padding-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 34px;
+  row-gap: 50px;
+  align-items: start;
+}
+
+.card__link {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card__media {
+  width: 100%;
+  aspect-ratio: 650 / 408;
+  background: var(--placeholder);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__media--blue {
+  background: var(--blue);
+  aspect-ratio: 658 / 417;
+}
+
+.card__media--blue img {
+  width: 87%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.card__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  color: var(--ink);
+}
+
+.card--featured .card__title { color: var(--plum); }
+
+.card__text {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--body);
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 48px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.badge {
+  padding: 2px 6px;
+  background: var(--badge-bg);
+  border-radius: 4px;
+  color: var(--body);
+}
+
+.card__link:hover .card__title { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--footer-bg);
+  color: var(--footer-ink);
+  padding: 60px 24px 0;
+  min-height: 452px;
+  overflow: hidden;
+}
+
+.footer__inner {
+  width: min(696px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 102px;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+}
+
+.footer__col h3 {
+  margin: 0 0 20px;
+  font-family: ui-monospace, "SF Mono", "Geist Mono", Menlo, monospace;
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Open Sauce One isn't on Google Fonts; Geist is the fallback */
+.footer__col a {
+  font-family: "Open Sauce One", var(--font-body);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.footer__col a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.ext { display: inline-flex; align-items: flex-start; gap: 4px; }
+
+.footer__big {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(56px, 12vw, 128px);
+  line-height: normal;
+  color: var(--lilac);
+  white-space: nowrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .nav__links { gap: 28px; }
+}
+
+@media (max-width: 860px) {
+  .projects {
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+    width: min(658px, 100% - 2 * 20px);
+  }
+
+  .hero { margin-top: 56px; }
+  .hero__intro { font-size: 30px; }
+  .projects { margin-top: 56px; }
+}
+
+@media (max-width: 600px) {
+  .nav { height: auto; min-height: 72px; flex-wrap: wrap; gap: 12px; }
+  .nav__links { gap: 18px; font-size: 13px; letter-spacing: 0.7px; }
+  .card__meta { gap: 8px 24px; font-size: 14px; }
+  .card__text { font-size: 16px; }
+  .footer__links { gap: 48px; }
+  .footer__inner { gap: 64px; }
+}
